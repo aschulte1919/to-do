@@ -1,79 +1,50 @@
-require("dotenv").config();
-var express = require("express");
-var bodyParser = require("body-parser");
+// server.js
 
-var db = require("./models");
+// set up ======================================================================
+// get all the tools we need
+var express  = require('express');
+var session  = require('express-session');
+var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
+var morgan = require('morgan');
+var app      = express();
+var port     = process.env.PORT || 8080;
 
-var app = express();
-var PORT = process.env.PORT || 3000;
+var passport = require('passport');
+var flash    = require('connect-flash');
 
-// Middleware
-app.use(bodyParser.urlencoded({ extended: false }));
+// configuration ===============================================================
+// connect to our database
+
+require('./config/passport')(passport); // pass passport for configuration
+
+// set up our express application
+app.use(morgan('dev')); // log every request to the console
+app.use(cookieParser()); // read cookies (needed for auth)
+app.use(bodyParser.urlencoded({
+	extended: true
+}));
 app.use(bodyParser.json());
-app.use(express.static("public"));
 
-// Routes
-require("./routes/apiRoutes")(app);
-require("./routes/htmlRoutes")(app);
+app.set('view engine', 'ejs'); // set up ejs for templating
 
-var syncOptions = { force: false };
-
-// If running a test, set syncOptions.force to true
-// clearing the `testdb`
-if (process.env.NODE_ENV === "test") {
-  syncOptions.force = true;
-}
-
-// Starting the server, syncing our models //
-db.sequelize.sync(syncOptions).then(function() {
-  app.listen(PORT, function() {
-    console.log(
-      "==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.",
-      PORT,
-      PORT
-    );
-  });
-});
+// required for passport
+app.use(session({
+	secret: 'vidyapathaisalwaysrunning',
+	resave: true,
+	saveUninitialized: true
+ } )); // session secret
+app.use(passport.initialize());
+app.use(passport.session()); // persistent login sessions
+app.use(flash()); // use connect-flash for flash messages stored in session
+app.use('/assets', express.static(__dirname + "/assets"));
+app.use('/public', express.static(__dirname + "/public"));
 
 
+// routes ======================================================================
+require('./app/routes.js')(app, passport); // load our routes and pass in our app and fully configured passport
+require('./pubilc/js/index.js');
 
-module.exports = app;
-
-
-
-
-
-function login(email, password, callback) {
-  var connection = mysql({
-    host: 'localhost',
-    user: 'root',
-    password: 'secret',
-    database: 'mydb'
-  });
-
-  connection.connect();
-
-  var query = "SELECT id, nickname, email, password " +
-    "FROM users WHERE email = ?";
-
-  connection.query(query, [email], function (err, results) {
-    if (err) return callback(err);
-    if (results.length === 0) return callback(new WrongUsernameOrPasswordError(email));
-    var user = results[0];
-
-    bcrypt.compare(password, user.password, function (err, isValid) {
-      if (err) {
-        callback(err);
-      } else if (!isValid) {
-        callback(new WrongUsernameOrPasswordError(email));
-      } else {
-        callback(null, {
-          id: user.id.toString(),
-          nickname: user.nickname,
-          email: user.email
-        });
-      }
-    });
-
-  });
-}
+// launch ======================================================================
+app.listen(port);
+console.log('The magic happens on port ' + port);
