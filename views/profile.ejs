@@ -14,33 +14,11 @@
 
 <body>
 	<div class="container">
-
-		<div class="page-header text-center">
-			<div><img src="../assets/images/tada-logo.png" alt="Ta-Da Logo" id="logo" style="width: 80%"></div>
+		<div class="text-center jumbotron">
+			<div><img src="../assets/images/tada-logo.png" alt="Ta-Da Logo" id="logo"></div>
 			<h1> Profile Page</h1>
-			<a href="/logout" class="btn btn-default btn-sm">Logout</a>
+			<a href="/logout" class="btn btn-default btn">Logout</a>
 		</div>
-
-		<div class="row">
-
-			<!-- LOCAL INFORMATION -->
-			<div class="col-sm-6">
-				<div class="well">
-					<h3><span class="fa fa-user"></span> Local</h3>
-
-					<p>
-						<strong>id</strong>:
-						<%= user.id %><br>
-						<strong>username</strong>:
-						<%= user.username %><br>
-						<strong>password</strong>:
-						<%= user.password %>
-					</p>
-
-				</div>
-			</div>
-		</div>
-		<div class="container">
 			<p>
 				<label for="new-task">Add Item</label><input id="new-task" type="text"><button>Add</button>
 			</p>
@@ -60,7 +38,6 @@
 					 class="delete">Delete</button></li>
 			</ul>
 		</div>
-	</div>
 	<script type="text/javascript" src="../public/js/index.js"></script>
 </body>
 

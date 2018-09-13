@@ -5,7 +5,7 @@ body {
 }
 .container {
   display: block;
-  width: 400px;
+  width: 70%;
   margin: 100px auto 0;
 }
 #logo {
@@ -17,6 +17,7 @@ ul {
 }
 li * {
   float: left;
+  align-content: center;
 }
 li, h3 {
   clear:both;
