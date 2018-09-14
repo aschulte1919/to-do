@@ -6,36 +6,65 @@
 	<title>TO DO ~ TA DA</title>
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
-	<link href='http://fonts.googleapis.com/css?family=Lato:300,400,700' rel='stylesheet' type='text/css'>
+	<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 	<base href="/">
 	<link rel="stylesheet" href="../public/styles/styles.css" type="text/css" media="screen" charset="utf-8">
-	<style> body {word-wrap: break-word;}</style>
+	<style> 
+		body {
+			word-wrap: break-word;
+			font-family: 'Montserrat', sans-serif;
+		}
+		.editmode {
+			font-family: 'Montserrat', sans-serif;
+		}
+		.edit {
+			width: 50px; 
+			font-family: 'Montserrat', sans-serif;
+		}
+		.delete {
+			width: 80px; 
+			font-family: 'Montserrat', sans-serif;
+		}
+		.input {
+			font-family: 'Montserrat', sans-serif;
+		}
+	</style>
 </head>
 
 <body>
 	<div class="container">
 		<div class="text-center jumbotron">
 			<div><img src="../assets/images/tada-logo.png" alt="Ta-Da Logo" id="logo"></div>
-			<h1> Profile Page</h1>
+			<h2 style="font-family: 'Montserrat', sans-serif;">PROFILE PAGE</h2>
 			<a href="/logout" class="btn btn-default btn">Logout</a>
 		</div>
 			<p>
-				<label for="new-task">Add Item</label><input id="new-task" type="text"><button>Add</button>
+				<label for="new-task">Add Item</label>
+				<input id="new-task" type="text" style="width: 100%; height: 50px;">
+				<button style="font-family: 'Montserrat', sans-serif; width: 130px;">CLICK TO ADD</button>
 			</p>
 
-			<h3>To-do</h3>
+			<h3 style="font-family: 'Montserrat', sans-serif;">To-do</h3>
 			<ul id="incomplete-tasks">
-				<li><input type="checkbox"><label>Pay Bills</label><input type="text"><button class="edit">Edit</button><button
-					 class="delete">Delete</button></li>
-				<li class="editMode"><input type="checkbox"><label>Go Shopping</label><input type="text" value="Go Shopping"><button
-					 class="edit">Edit</button><button class="delete">Delete</button></li>
-
+				<li>
+					<input type="checkbox">
+						<label class="input" style="font-family: 'Montserrat', sans-serif;">Pay Bills</label>
+						<input type="text">
+						<button class="edit">EDIT</button>
+						<button class="delete">DELETE</button>
+				</li>
+				<li class="editMode">
+					<input type="checkbox">
+					<label class="input">Go Shopping</label>
+					<input type="text" value="Go Shopping" style="font-family: 'Montserrat', sans-serif; height: 50px; width: 240px;">
+					<div><button class="edit">EDIT</button><button class="delete">DELETE</button></div>
+				</li>
 			</ul>
 
-			<h3>Forgeddabowdit</h3>
+			<h3 style="font-family: 'Montserrat', sans-serif;">Forgeddabowdit</h3>
 			<ul id="completed-tasks">
-				<li><input type="checkbox" checked><label>See the Doctor</label><input type="text"><button class="edit">Edit</button><button
-					 class="delete">Delete</button></li>
+				<li><input type="checkbox" checked><label>See the Doctor</label><input type="text"><button class="edit">EDIT</button><button
+					 class="delete">DELETE</button></li>
 			</ul>
 		</div>
 	<script type="text/javascript" src="../public/js/index.js"></script>
