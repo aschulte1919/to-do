@@ -18,10 +18,12 @@
 			font-family: 'Montserrat', sans-serif;
 		}
 		.edit {
+			float: right;
 			width: 50px; 
 			font-family: 'Montserrat', sans-serif;
 		}
 		.delete {
+			float: right;
 			width: 80px; 
 			font-family: 'Montserrat', sans-serif;
 		}
@@ -33,41 +35,46 @@
 
 <body>
 	<div class="container">
-		<div class="text-center jumbotron">
-			<div><img src="../assets/images/tada-logo.png" alt="Ta-Da Logo" id="logo"></div>
-			<h2 style="font-family: 'Montserrat', sans-serif;">PROFILE PAGE</h2>
+		<div class="text-center">
+			<div><img src="../assets/images/tada-logo.png" alt="Ta-Da Logo" id="logo" style="width: 80%; padding-top: 40px"></div>
+			<h2 style="font-family: 'Montserrat', sans-serif;">this is your to do list</h2>
 			<a href="/logout" class="btn btn-default btn">Logout</a>
 		</div>
 			<p>
-				<label for="new-task">Add Item</label>
-				<input id="new-task" type="text" style="width: 100%; height: 50px;">
-				<button style="font-family: 'Montserrat', sans-serif; width: 130px;">CLICK TO ADD</button>
+				<label for="new-task" style="font-family: 'Montserrat', sans-serif; font-size: 20px">Add Item</label>
+				<input id="new-task" type="text" style="width: 80%; height: 50px;">
+				<button style="font-family: 'Montserrat', sans-serif; width: 130px; float: right;">Click to add</button>
 			</p>
 
-			<h3 style="font-family: 'Montserrat', sans-serif;">To-do</h3>
+			<h3 style="font-family: 'Montserrat', sans-serif; font-size: 20px">To-do</h3>
 			<ul id="incomplete-tasks">
-				<li>
+				<!-- <li>
 					<input type="checkbox">
-						<label class="input" style="font-family: 'Montserrat', sans-serif;">Pay Bills</label>
+						<label class="input" style="font-family: 'Montserrat', sans-serif; width: 80%;">Pay Bills</label>
 						<input type="text">
-						<button class="edit">EDIT</button>
-						<button class="delete">DELETE</button>
+						<button class="edit">Edit</button>
+						<button class="delete">Delete</button>
 				</li>
 				<li class="editMode">
 					<input type="checkbox">
 					<label class="input">Go Shopping</label>
-					<input type="text" value="Go Shopping" style="font-family: 'Montserrat', sans-serif; height: 50px; width: 240px;">
-					<div><button class="edit">EDIT</button><button class="delete">DELETE</button></div>
-				</li>
+					<input type="text" value="Go Shopping" style="font-family: 'Montserrat', sans-serif; height: 50px; width: 83%;">
+					<div><button class="edit">Edit</button><button class="delete">Delete</button></div>
+				</li> -->
 			</ul>
 
-			<h3 style="font-family: 'Montserrat', sans-serif;">Forgeddabowdit</h3>
+			<h3 style="font-family: 'Montserrat', sans-serif; font-size: 20px">Completed</h3>
 			<ul id="completed-tasks">
-				<li><input type="checkbox" checked><label>See the Doctor</label><input type="text"><button class="edit">EDIT</button><button
-					 class="delete">DELETE</button></li>
+				<!-- <li><input type="checkbox" checked><label>See the Doctor</label><input type="text"><button class="edit">Edit</button><button
+					 class="delete">Delete</button></li> -->
 			</ul>
 		</div>
 	<script type="text/javascript" src="../public/js/index.js"></script>
 </body>
 
 </html>
+
+<!-- add favicon
+add local storage
+create presentation -->
+

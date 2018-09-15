@@ -12,17 +12,14 @@
 			word-wrap: break-word;
 			font-family: 'Montserrat', sans-serif;
 		}
-        .container {
-            margin-top: 100px; 
-        }
     </style>
 </head>
 
 <body>
     <div class="container">
         <div class="col-sm-6 col-sm-offset-3">
-            <div><img src="../assets/images/tada-logo.png" alt="Ta-Da Logo" id="logo" style="width: 100%"></div>
-            <h1> Login</h1>
+            <div><img src="../assets/images/tada-logo.png" alt="Ta-Da Logo" id="logo" style="width: 100%; padding-top: 40px"></div>
+            <h1 style="font-family: 'Montserrat', sans-serif;"> Login</h1>
 
             <% if (message.length > 0) { %>
             <div class="alert alert-danger">
@@ -45,7 +42,7 @@
                     <input type="checkbox" class="form-control" name="remember" value="yes">
                 </div>
 
-                <button type="submit" class="btn btn-warning btn-lg">Login</button>
+                <button type="submit" class="btn btn btn-lg">Login</button>
             </form>
 
             <hr>
