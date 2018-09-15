@@ -130,8 +130,55 @@ for (var i = 0; i < completedTasksHolder.children.length; i++) {
 };
 
 // AUTHENTICATION FUNCTION //
+var list = JSON.parse(localStorage.getItem("incomplete-tasks"));
 
-var div = $("<div>");
+if (!Array.isArray(list)) {
+  list = [];
+}
 
-var test = $(username + "<h5 class='header'>)this is your to do list <br><br></h5>");
-div.append(test);
+function putOnPage() {
+
+  $("#incomplete-tasks").empty(); // empties out the html
+
+  var insideList = JSON.parse(localStorage.getItem("incomplete-tasks"));
+
+  if (!Array.isArray(insideList)) {
+    insideList = [];
+  }
+
+  // render our insideList todos to the page
+  for (var i = 0; i < insideList.length; i++) {
+    var p = $("<p>").text(insideList[i]);
+    var b = $("<button class='delete'>").text("x").attr("data-index", i);
+    p.prepend(b);
+    $("#incomplete-tasks").prepend(p);
+  }
+}
+
+// render our todos on page load
+putOnPage();
+
+$(document).on("click", "button.delete", function() {
+  var incompletetasks = JSON.parse(localStorage.getItem("incomplete-tasks"));
+  var currentIndex = $(this).attr("data-index");
+
+  // Deletes the item marked for deletion
+  incompletetasks.splice(currentIndex, 1);
+  list = incompletetasks;
+
+  localStorage.setItem("incomplete-tasks", JSON.stringify(incompletetasks));
+  putOnPage();
+});
+
+$("input[type='submit']").on("click", function(event) {
+  event.preventDefault();
+  // Setting the input value to a variable and then clearing the input
+  var val = $("input[type='text']").val();
+  $("input[type='text']").val("");
+
+  // Adding our new todo to our local list variable and adding it to local storage
+  list.push(val);
+  localStorage.setItem("incomplete-tasks", JSON.stringify(list));
+
+  putOnPage();
+});
